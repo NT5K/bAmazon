@@ -1,0 +1,40 @@
+id,product_name,department_name,price,stock_quantity
+1,"TCL 50 inch 4K Smart LED Roku TV",Televisions,300,57
+2,"Sony 55-Inch 4K Ultra HD Smart LED TV",Televisions,748,17
+3,"Samsung Frame 65" QLED 4K UHD Smart TV",Televisions,1798,6
+4,"Sony 65-Inch 4K Ultra HD Smart LED TV",Televisions,980,7
+5,"Inflatable Water Float, 53" Diameter","Toys & Games",13,100
+6,"LEGO Star Wars Kylo Ren's Tie Fighter Kit (630 Piece)","Toys & Games",78,30
+7,"LEGO Technic WHACK! Building Kit (135 Piece)","Toys & Games",13,25
+8,"Crayola Mini Twistables Crayons, 24 Colors","Toys & Games",4,75
+9,"LEGO Ideas Voltron Building Kit (2321 Pieces)","Toys & Games",180,40
+10,"What Do You Meme? NSFW Expansion Deck","Toys & Games",12,40
+11,"Loose-fit Short-Sleeve Stripe Crewneck T-Shirts","Mens Clothing",13,200
+12,"Men's Knox Short Sleeve T-Shirt","Mens Clothing",13,200
+13,"Straight-fit Stretch Bootcut Jeans","Mens Clothing",24,238
+14,"Men's Polar Fleece Full-Zip Athletic-fit Jacket","Mens Clothing",25,150
+15,"J.Crew Mercantile Women's Raw Edge Denim Mini Skirt","Womens Clothing",50,50
+16,"Small Travel Daypack Purse with Anti-theft Pocket","Womens Clothing",18,75
+17,"Cozy Knit Raglan Pullover","Womens Clothing",37,50
+18,"Dakota Waffle Truth Knit Cardigan","Womens Clothing",54,40
+19,"Supersoft Terry Short-Sleeve Boxy Pocket Tee","Womens Clothing",23,80
+20,"Cat Food",Televisions,34,44
+21,"Silly Puddy","Toys & Games",5,899
+22,"Canned Beans",Other,3,45
+23,"Beats Headphones",Electronics,100,60
+24,"Washing Machine",Appliances,800,31
+25,"Pepsi 12 pack","Food and Beverages",6,70
+26,"iPhone X",Electronics,1000,40
+27,Scrabble,"Toys & Games",20,56
+28,"Super Soaker","Toys & Games",15,66
+29,"Roku Express",Electronics,35,35
+30,Monopoly,"Toys & Games",40,34
+31,"3 set Non-stick pans",Housewares,85,30
+32,"Mr. Sketch Scented Markers, Chisel Tip, Assorted Colors, 12 Pack","Toys & Games",5,50
+33,"Sony DSCW800/B 20.1 MP Digital Camera (Black)",Electronics,88,13
+34,"Xbox One X 1TB Console - NBA 2K19 Bundle",Electronics,368,40
+35,0,0,NULL,NULL
+36,Test,"Toys & Games",65,65
+37,"Test 2","Toys & Games",15,30
+38,Test3,"Toys & Games",3,66
+39,test5,"Toys & Games",5,5
