@@ -7,6 +7,7 @@
 ```MySQL or a SQL database manager```<br>
 ```node.js```<br><br>
 
+#### Instructions <br>
 Clone this repo into new folder: <br>
 ```https://github.com/NT5K/bAmazon.git```<br><br>
 
