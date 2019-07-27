@@ -54,12 +54,7 @@ function purchasePrompt() {
 };
 
 function purchaseOrder(id, amount) {
-    const itemId = [
-        {
-            id: 
-        }
-    ]
-    connection.query('Select * FROM products WHERE ?", + id, function (err, res) {
+    connection.query('Select * FROM products WHERE id = ' + id, function (err, res) {
         const result = res[0]
         // CATCH ERROR
 
@@ -74,7 +69,7 @@ function purchaseOrder(id, amount) {
             console.log("There are at least " + amount + " of these in stock!");
             console.log("Your total cost for " + amount + " " + result.product_name + " is " + totalCost + ", database has been updated!");
 
-            connection.query("UPDATE products SET stock_quantity = stock_quantity - " + amount + " WHERE id = " + itemId);
+            connection.query("UPDATE products SET stock_quantity = stock_quantity - " + amount + " WHERE id = " + id);
         } else {
             console.log("Insufficient quantity, sorry we do not have enough " + result.product_name + "'s to complete your order.");
         };
