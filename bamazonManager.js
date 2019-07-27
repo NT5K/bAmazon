@@ -31,7 +31,9 @@ function showTable(res) {
 // function for catching errors, passing data to the showTable function, reshowing questions 
 function catchErrorShowTableAskQuestions(err, res) {
     // catch error
-    if (err) throw err;
+    if (err) {
+        throw err
+    };
     // show table using query data
     showTable(res)
     //reshow questions
@@ -47,6 +49,21 @@ function displayProducts() {
         // run this function to catch errors and display table
         catchErrorShowTableAskQuestions(err, res)
     });
+}
+
+// returns last item id number in the tables id column
+function returnMaxItemIdLength() {
+    // query for database
+    const query = "SELECT * FROM products ORDER BY id DESC LIMIT 1";
+    // query the products database
+    connection.query(query, function (err, res) {
+        // catch errors
+        if (err) {
+            throw err
+        }
+        // console.log("max length of item id's", res[0].id)
+        return Number(res[0].id)
+    })
 }
 
 // display products without auto reshow questions
@@ -73,12 +90,10 @@ function lowInventory() {
     })
 }
 
-
 // add new product to database function
 function addNewProduct(name, department, price, quantity) {
     // query for inserting new row into database
-    // const insert = "INSERT INTO products (product_name, department_name, price, stock_quantity) VALUES ('" +
-    //             name + "', '" + department + "', '" + price + "', '" + quantity + "')"
+
     const insert = "INSERT INTO products SET ?"
     const items = [
         {
@@ -92,7 +107,9 @@ function addNewProduct(name, department, price, quantity) {
     connection.query(insert, items, function (err) {
         console.log(insert)
         // catch error
-        if (err) throw err;
+        if (err) {
+            throw err
+        };
         // display this string
         console.log((chalk.bold.green("\nCongratulations!")) + "You have added " + name + "\n to the " + department + " department!\n")
     })
@@ -144,23 +161,26 @@ function newProductQuestions() {
         }
 
     ]).then(function (answers) {
+
         const a = answers
+        // checks for if statements
         const nanPrice = isNaN(a.price)
         const nanQuant = isNaN(a.quantity)
-        // pass inputs to addNewProduct function ^^
         if (nanPrice && nanQuant)  {
             console.log(chalk.bold.redBright("the price and quantity are not a valid input"))
             questionPrompt()
         } else if (nanQuant) {
             console.log(chalk.bold.redBright("The quantity you provided is not a valid input"))
             questionPrompt()
+            
         } else if (nanPrice) {
             console.log(chalk.bold.redBright("The price you provided is not a valid input"))
             questionPrompt()
         } else {
+            // pass inputs to addNewProduct function if they pass validations
             addNewProduct(a.name, a.department, a.price, a.quantity)
         }
-    });
+        });
 }
 
 // displays database without question, then question is displayed with a setTimeOut()
@@ -188,24 +208,38 @@ function addToInventory() {
                 message: "How many items would like to add to inventory??"
             }
         ]).then(function (answer) {
+
+            // **
+            //  NOTE: Cannot figure out how to catch error when input number is greater than table length
+            //        attempts on line 221, 239-241
+            // **
+    
             // store answers in reusable variables
             const itemId = answer.product
             const quantity = answer.quantity
-            // if inputs are not numbers
-            if (isNaN(itemId) || isNaN(quantity)) {  //NEED ERROR FOR (id.length)
-                console.log("Invalid Input")
-                questionPrompt()
-            }
+            //if input is not a number or max id is greater than id number input
+            if (isNaN(itemId) || isNaN(quantity) || Number(itemId) > returnMaxItemIdLength()){  //NEED ERROR FOR (id.length)
+                    console.log("Invalid Input")
+                    questionPrompt()
+                }
+            // })
             // query for selecting the column to update
-            const columnQuery = "select stock_quantity from products where id = ?"
+            const columnQuery = "SELECT * FROM products WHERE id = ?"
             // query database using ID from input
             connection.query(columnQuery, [itemId], function (err, res) {
                 // catch any errors
                 if (err) {
                     throw err
                 }
+
                 /* once we know what row to update we query the database again 
                     and add quantity to the response from previous query */
+
+                    //error attempt
+                    if (res[0].stock_quantity > itemId) {
+                        console.log("error id not found")
+                    }
+                
                 const updateQuantity = res[0].stock_quantity + parseFloat(quantity);
                 const updateQuery = "update products set ? where ?"
                 const updateObject = [
@@ -236,6 +270,7 @@ function addToInventory() {
                 });
             });                
         });
+    // end set time out
     }, 500)
 }
 
@@ -248,6 +283,7 @@ function exitTheProgram() {
 
 // questions to navigate through program function
 function questionPrompt() {
+    // reusable variables
     const allProducts = "View" + (chalk.green(' all ')) + "Products for " + (chalk.green('sale'));
     const lessThan20 = "View Products with" + (chalk.green(' inventory ')) + "lower than " + (chalk.red('20 units'));
     const addProduct = 'Add' + (chalk.green(" units ")) + 'to a products' + (chalk.green(" inventory"));
