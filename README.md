@@ -19,6 +19,9 @@ Copy contents of `bAmazonSeed.sql` file into your database manager and create th
 
 Import database content using `bamazonData.csv` file<br><br>
 
+##### Note: <br>
+You most likely will have to change your `password` in the `connections.js` file <hr>
+
 Open your cmd, navigate to repo folder and run: <br>
 ``` node bamazonManager.js```
 
