@@ -23,7 +23,8 @@ Import database content using `bamazonData.csv` file<br><br>
 You most likely will have to change your `password` in the `connections.js` file <hr>
 
 Open your cmd, navigate to repo folder and run: <br>
-``` node bamazonManager.js```
+``` node bamazonManager.js``` <br>
+or ```node bamazonCustomer.js``` to sample the customer front end <br>
 
 
 #### There are 5 options to choose from:
